@@ -1,0 +1,126 @@
+html pseudo-code
+use a div for the calc body
+for the screen, use a section, and initialize the val to 0
+use a section to hold the calc buttons
+for each calc button rows, use a div to hold them
+use a 2nd class for the buttons 0 and C, to resize them later
+
+css pseudo-code
+for the whole html, initialize the box-sizing to border-box, and its height to 100%
+set the before and after selector of each elements to, inheret the box-sizing, margin and padding to 0
+for the body:
+    align-item to center
+    background to linear-gradient
+    display to flex
+    font-family, and its display to swap
+    inheret height
+    and justify content to center
+for the calc body's div:
+    set the backdrop-filter and webkit backdrop filter to blur
+    border-radius to 16px
+    box-shadow to 0, 4, 30, rgba to 35,..., 0.1
+    color 232323
+    set the backdrop-filter and webkit-backdrop again but with a lower value
+    background to rgba 255,..., 0.75
+    border to 1px, solid and 255,..., 0.01
+    flex-basis to 400px
+    height to 540
+    padding to 20 35
+for the screen
+    backdrop-filter and webkit
+    background to rgba 255,..., 0.75
+    set the border to 1px solid with an rgba value of 255, 0.01
+    border radius of 16px
+    box shadow of 0 4px 30px with an rgba of 35, 0.1
+    font size to 35
+    overflow set to auto
+    padding of 20
+    text aligned to the right
+    and a width of 326
+for the button rows
+    display set to flex
+    justify content to space between
+    margin to 5% 0
+for the buttons
+    set the backdrop and webkit backdrop filter
+    background to 255, 0.75
+    border to 1px solid rgba 255, 0.01
+    radius to 16
+    box shadow of 0 4 30 35, 0.1
+    color 232323
+    flex-basis 20%
+    inheret font font-family
+    font size to 24
+    height of 65
+for the last child of calc button rows
+    set the backdrop and webkit filter to blur
+    background 255, 0.75
+    border 1 solid rgba 255, 0.01
+    radius to 16
+    box shadow 0 4 30 rgba 35, 0.1
+    color fff
+    background
+last child hover
+    inheret bg color and color
+button hover
+    bg color inheret
+button active 
+    bg color
+c and 0 button 
+    flex basis to 47 and 73%
+
+js 
+create 3 var, one for a var used for computation, one for a buffer (string) and an empty var to hold the operator
+create a const to track the class for the screen
+create a function for button clicks with a single param
+    check if the param is not a number
+        if it is, execute a function for handling symbol
+    if it is a number
+        execute a function for handling numbers
+    set the innertext of the screen to buffer var
+create a function to handling symbol with a single param
+    use a switch statement to check if the param is;
+        C 
+            set buffer to 0
+            first global var to 0
+        =
+            check if the var for operator is null
+                do nothing
+            otherwise
+                execute a function for computing numbers, pass the buffer as the arguement, but parsed
+                set the operator var to null
+                set the buffer to the running total, just in case the user want to do more computation
+                set running total to 0
+        CE 
+            check if the length of the buffer is equal to 1
+                set buffer to 0
+            otherwise
+                set buffer equal to the substring of buffer
+        operation 
+            execute a function for handling math 
+
+create a function for handling math with a single param to hold the operator
+    check if buffer is 0, if it is, do nothing
+
+    create a const for parsing buffer to int 
+    check if running total is 0
+        set the runningTotal to the parsed buffer
+    otherwise
+        execute the function to compute numbers
+    
+    set the var operator to the param, and buffer to 0
+
+create a function to compute numbers with a single param
+    just compute the runningTotal and the param
+
+create a function to handle number with a single param
+    check if buffer is 0(string)
+        set buffer to param
+    otherwise
+        update buffer to the param
+
+create a function to track which button is pressed
+    track the div where the buttons are 
+    using the addEventListener method, create a function with a single param using it, execute the button click function, and use the param as the arguement to track the target's innerText
+
+call the init function
